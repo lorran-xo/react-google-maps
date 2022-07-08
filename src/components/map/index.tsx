@@ -11,7 +11,7 @@ interface Props {
 function Map({center, zoom, containerStyle, children}: Props) {
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyAwB_mBmKS5aVohKJ54f3cyi92STZtfYqY"
+      googleMapsApiKey=""
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
