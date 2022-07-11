@@ -41,35 +41,52 @@ function App() {
         overflow: "auto",
       }}>
         {mockResponse.clinics.map((item: any, index: number) => (
-          <p 
+          <div 
             key={index.toString()} 
             onClick={() => console.log("Clicked on: ", item.latitude, item.longitude)}
-            style={{cursor: 'pointer', flexDirection: 'row'}}
+            style={{cursor: 'pointer', flexDirection: 'row', marginBottom: 20}}
           >
-            <span style={{color: 'blue'}}>{item.name}<br /></span>
+            <div style={{flexDirection: 'row', alignItems: 'center'}}> 
+              <span style={{color: '#2BC3DB', fontWeight: 'bold'}}>{item.name}</span>
+              <div style={{backgroundColor: '#B2BEB5', borderRadius: 5, width: '5%'}}>
+                <span style={{fontSize: 12, color: 'black', fontWeight: 'bold'}}>{item.relevance}€</span>
+              </div>
+            </div>
+            
             <span style={{fontSize: 13}}>{item.address}, {item.city}</span><br />
             <span style={{fontSize: 13}}>{item.postalCode}</span>
-            {/* <div style={{width: '90%', marginTop: '5px', height: '1px', backgroundColor: 'grey'}} /> */}
-          </p>
+            <div style={{width: '90%', marginTop: '10px', height: '1px', backgroundColor: '#D3D3D3'}} />
+          </div>
         ))} 
       </div>
           
       <Map containerStyle={containerStyle} center={center}>
-          {mockResponse.clinics.map((item: any, index: number) => (
+            <InfoWindow
+              key={123}
+              onCloseClick={() => setInfoBoxPosition(null)}
+              position={center} 
+              >
+              <div style={divStyle}>
+                <h1>InfoWindow</h1>
+              </div>
+            </InfoWindow>
+      
+
+          {/* {mockResponse.clinics.map((item: any, index: number) => (
             <Marker
               label={item.code + ' €'}
               // icon={icon}
-              // icon={'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'}
-              key={index}
+              icon={'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'}
+              // key={item.code}
               position={{lat: item.latitude, lng: item.longitude}} 
               onClick={() => handleMarkerClick(item.latitude, item.longitude)}
             />
-          ))}
+          ))} */}
       
         {/* {infoBoxPosition && (
           <InfoWindow
             onCloseClick={() => setInfoBoxPosition(null)}
-            position={infoBoxPosition}
+            position={infoBoxPosition} 
             >
             <div style={divStyle}>
               <h1>InfoWindow</h1>
