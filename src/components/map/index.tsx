@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 interface Props {
   center: any;
-  zoom?: any;
+  zoom?: number;
   containerStyle: any;
   children: any;
 }
@@ -11,12 +11,12 @@ interface Props {
 function Map({center, zoom, containerStyle, children}: Props) {
   return (
     <LoadScript
-      googleMapsApiKey=""
+      googleMapsApiKey="API_KEY_HERE"
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+        zoom={zoom}
       >
         <>
         {children}
